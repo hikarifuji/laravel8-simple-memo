@@ -69,13 +69,23 @@ DBマイグレーションがあれば、
 $ php artisan make:model Memo -m
 Model created successfully.
 Created Migration: 2021_11_25_140117_create_memos_table
-
-$ 
-
+```
+マイグレートファイルはdatabase/migrate/以下に
+モデルはapp/Models/以下に
+```
+$ php artisan make:model Tag -m
+$ php artisan make:model MemoTag -m
 ```
 
 ### マイグレーションファイルにテーブル定義を追加
+upとdown
+upはマイグレーションを実行したときに実行される
+downはロールバックしたときに実行される
 
+マイグレーションファイルを修正して、以下コマンドを実行
+```
+$ php artisan migrate
+```
 
 ### ログイン機能の実装
 
@@ -84,6 +94,17 @@ $ composer require laravel/ui
 $ php artisan ui bootstrap --auth
 $ npm install && npm run dev
 ```
+
+### LaravelのViewであるbladeテンプレートの実装
+- HTMLの中にPHPを埋め込めるテンプレートエンジン
+- /resources/viewsの配下に置く
+
+- レイアウト化につかう命令
+  - @extends('レイアウトファイル名')
+  - @yield('埋め込む名前')
+  - @section('埋め込みたい場所の名前')
+
+
 
 
 ## 参考
@@ -109,21 +130,21 @@ php artisan migrate
 
 ## ソースコード対応表
 
-| レクチャー名                                 | ブランチ名     | 
-| -------------------------------------------- | -------------- | 
-| マイグレーションファイルにテーブル定義を実装 | migration-file | 
-| ログイン機能の実装                       |  login  | 
-| 認証用レイアウトファイルの作成             | layout| 
-| レイアウトの大枠を開発                    | card-layout        | 
-| メモ作成機能の開発（View側）              |  memo-create-1   | 
-| メモ作成機能の開発（DB側）                |    memo-create-2 | 
-| メモ一覧取得（DB側）                     |      memo-get-1  | 
-| メモ一覧をレンダリング                    |       memo-get-2  | 
-| メモ更新機能（View側）                   |      memo-update-1  | 
-| メモ更新機能（DB側）                     |      memo-update-2  | 
-| メモ削除機能の開発                       |     delete-1        |  
-| メモにタグを付けられるように改良            |      add-tag       | 
-| メモに既存タグを付けられるように改良        |      add-tag-2     | 
+| レクチャー名                                 | ブランチ名     |
+| -------------------------------------------- | -------------- |
+| マイグレーションファイルにテーブル定義を実装 | migration-file |
+| ログイン機能の実装                       |  login  |
+| 認証用レイアウトファイルの作成             | layout|
+| レイアウトの大枠を開発                    | card-layout        |
+| メモ作成機能の開発（View側）              |  memo-create-1   |
+| メモ作成機能の開発（DB側）                |    memo-create-2 |
+| メモ一覧取得（DB側）                     |      memo-get-1  |
+| メモ一覧をレンダリング                    |       memo-get-2  |
+| メモ更新機能（View側）                   |      memo-update-1  |
+| メモ更新機能（DB側）                     |      memo-update-2  |
+| メモ削除機能の開発                       |     delete-1        |
+| メモにタグを付けられるように改良            |      add-tag       |
+| メモに既存タグを付けられるように改良        |      add-tag-2     |
 | メモ更新にもタグ機能を付与（View側）        |  edit-tag-1  |
 | メモ更新にもタグ機能を付与（DB側）         |  edit-tag-2  |
 | ViewComposerで共通処理をまとめる         |  view-composer  |
