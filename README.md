@@ -104,8 +104,18 @@ $ npm install && npm run dev
   - @yield('埋め込む名前')
   - @section('埋め込みたい場所の名前')
 
+### app.blade.phpをコピー
+- ログイン用にauth.blade.phpを作成
+- app.blade.phpをbootstrapを使って3カラムに
+- auth>login.blade.phpとregister.blade.phpの読み込みファイルをauth.blade.phpにする
+- ログイン画面だけ1からむ、それ以降は3カラムの状態になる
 
+### カラムの見た目変更
+- https://getbootstrap.jp/docs/4.2/utilities/spacing/をコピペ
 
+### タイトルの変更
+- <title>{{ config('app.name', 'Laravel') }}</title>
+- 上記の書き方はconfig/app.phpのappnameに何も入ってなかったらLarabelを返すという書き方
 
 ## 参考
 [GitHubリポジトリはこちら](https://github.com/uchidayuma/udemy-laravel8-mysql-simple-memo)
