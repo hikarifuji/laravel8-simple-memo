@@ -3,7 +3,8 @@
 @section('content')
 <div class="card">
     <div class="card-header">新規メモ作成</div>
-    <form class="card-body" action="/store" method="post">
+     <!-- "{{ route('store') }}"と書くと⇨ /storeと同じ-- -->
+    <form class="card-body" action="{{ route('store') }}" method="post">
         @csrf
         <div class="form-group">
             <textarea class="form-control" name="content" rows="3" placeholder="ここにメモを入力"></textarea>

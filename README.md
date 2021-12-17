@@ -117,6 +117,12 @@ $ npm install && npm run dev
 - <title>{{ config('app.name', 'Laravel') }}</title>
 - 上記の書き方はconfig/app.phpのappnameに何も入ってなかったらLarabelを返すという書き方
 
+### メモ作成機能の開発(view側)
+
+### メモ一覧の取得(DB側)
+routes/web.php
+readmeは全て終わってから、もういっかい見直しつつできたコードをコピペしながら書いたほうが効率いいな。そうしよう
+
 ## 参考
 [GitHubリポジトリはこちら](https://github.com/uchidayuma/udemy-laravel8-mysql-simple-memo)
 
