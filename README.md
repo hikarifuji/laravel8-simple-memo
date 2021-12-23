@@ -122,6 +122,8 @@ $ npm install && npm run dev
 ### メモ一覧の取得(DB側)
 routes/web.php
 readmeは全て終わってから、もういっかい見直しつつできたコードをコピペしながら書いたほうが効率いいな。そうしよう
+Route::post('/store', [HomeController::class, 'store'])->name('store');
+を追加
 
 ## 参考
 [GitHubリポジトリはこちら](https://github.com/uchidayuma/udemy-laravel8-mysql-simple-memo)
