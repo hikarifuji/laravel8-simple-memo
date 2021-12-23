@@ -45,4 +45,20 @@ class HomeController extends Controller
 
         return redirect( route('home'));
     }
+
+    public function edit($id)
+    {
+        //ここでメモを取得(上で呼び出したメモモデルを使う)
+        $memos = Memo::select('memos.*')
+            ->where('user_id', '=', \Auth::id())
+            ->whereNull('deleted_at')
+            ->orderBy('updated_at', 'DESC')// ASC＝小さい順、DESC=大きい順
+            ->get();
+
+            //findを使うと主キーを元に1行分データが取れる
+            $edit_memo = Memo::find($id);
+
+        //createviewにconpactという関数を使いDBから取得したメモ一覧を渡す
+        return view('edit', compact('memos', 'edit_memo'));
+    }
 }
