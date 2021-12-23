@@ -61,4 +61,13 @@ class HomeController extends Controller
         //createviewにconpactという関数を使いDBから取得したメモ一覧を渡す
         return view('edit', compact('memos', 'edit_memo'));
     }
+
+    public function update(Request $request)
+    {
+        $posts = $request->all();
+        //updateを使う際は必ずwhereを使う
+        Memo::where('id', $posts['memo_id'])->update(['content' => $posts['content']]);
+
+        return redirect( route('home'));
+    }
 }
