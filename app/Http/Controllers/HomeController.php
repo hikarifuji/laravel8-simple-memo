@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// メモモデルを呼び出し
 use App\Models\Memo;
 
 class HomeController extends Controller
@@ -24,21 +25,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //ここでメモを取得
+        //ここでメモを取得(上で呼び出したメモモデルを使う)
         $memos = Memo::select('memos.*')
             ->where('user_id', '=', \Auth::id())
             ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')// ASC＝小さい順、DESC=大きい順
             ->get();
-            dd($memos);
 
-        return view('create');
+        //createviewにconpactという関数を使いDBから取得したメモ一覧を渡す
+        return view('create', compact('memos'));
     }
 
     public function store(Request $request)
     {
         $posts = $request->all();
 
+        //ここでフォームから入力したメモをDBに保存(上で呼び出したメモモデルを使う)
         Memo::insert(['content' => $posts['content'], 'user_id' => \Auth::id()]);
 
         return redirect( route('home'));
