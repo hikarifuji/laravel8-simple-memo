@@ -2,7 +2,14 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">メモ編集</div>
+    <div class="card-header">
+        メモ編集
+        <form class="card-body" action="{{ route('destory') }}" method="post">
+            @csrf
+            <input type="hidden" name="memo_id" value="{{ $edit_memo['id']}}" />
+            <button type="submit" class="btn btn-primary">削除</button>
+        </form>
+    </div>
      <!-- "{{ route('update') }}"と書くと⇨ /updateと同じ-- -->
     <form class="card-body" action="{{ route('update') }}" method="post">
         @csrf
