@@ -70,4 +70,14 @@ class HomeController extends Controller
 
         return redirect( route('home'));
     }
+
+    public function destory(Request $request)
+    {
+        $posts = $request->all();
+        //delete系を使う際は必ずwhereを使う
+        // Memo::where('id', $posts['memo_id'])->delete(); ⇦NG。物理削除になる
+        Memo::where('id', $posts['memo_id'])->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
+
+        return redirect( route('home'));
+    }
 }
